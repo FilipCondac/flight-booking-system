@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class Flight{
@@ -65,19 +66,54 @@ public class Flight{
 
     public int bookSeat(Passenger p){
         for (int i = 0; i < seats.size(); i++) {
-            if(p.getFlightClass() == seats.get(i).getFlyingClass()
-                    && seats.get(i).getAllocatedTo()==null){
+            if(seats.get(i).getAllocatedTo().getFlightClass() == seats.get(i).getFlyingClass() && seats.get(i).getAllocatedTo() == null){
                 seats.get(i).setAllocatedTo(p);
                 return 1;
             }
 
-//           if(p.getFlightClass() == "F" &&){
-//
-//           }
         }
     return -1;
 
     }
+
+    public boolean checkEconomySeats() {
+        boolean[] availableSeats = null;
+        for (int i = 0; i < seats.size(); i++) {
+            if(seats.get(i).getFlyingClass() == "E") {
+                if (seats.get(i).getAllocatedTo() == null) {
+                    availableSeats[i] = true;
+                } else if (seats.get(i).getAllocatedTo() != null) {
+                    availableSeats[i] = false;
+                }
+
+                if (availableSeats[i] == true) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean checkFirstSeats() {
+        boolean[] availableSeats = null;
+        for (int i = 0; i < seats.size(); i++) {
+            if(seats.get(i).getFlyingClass() == "F") {
+                if (seats.get(i).getAllocatedTo() == null) {
+                    availableSeats[i] = true;
+                } else if (seats.get(i).getAllocatedTo() != null) {
+                    availableSeats[i] = false;
+                }
+
+                if (availableSeats[i] == true) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+
 
     public int getFlightNumber() {
         return flightNumber;
