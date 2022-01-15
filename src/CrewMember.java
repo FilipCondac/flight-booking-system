@@ -4,8 +4,11 @@ public class CrewMember extends Person{
         super(name, passportNumber);
     }
 
+
     @Override
     public double calculatePersonWeight() {
         return 75;
     }
 }
+
+

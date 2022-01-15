@@ -78,6 +78,9 @@ public class Q1Main {
                     if(p_data[0].equals("passenger")) {
                         //attempt to add booking to the flight
                         int bookingOutcome = processPassenger(p_data, flights.get(i));
+//                        if(bookingOutcome == 1){
+//                            System.out.println("perfect " + p_data[1]);
+//                        }
                         if(bookingOutcome == 2){
                             System.out.println("upgrading " + p_data[1]);
                         }
